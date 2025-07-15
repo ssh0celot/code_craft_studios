@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Notes
+notes.txt
+webhooks.txt
+
 # Distribution / packaging
 .Python
 build/
