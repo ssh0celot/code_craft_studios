@@ -15,7 +15,7 @@ from mcp.server.fastmcp import FastMCP, Context
 
 
 # Initialize the FastMCP server
-mcp = FastMCP("pr-agent", transport = "stdio")
+mcp = FastMCP("pr-agent", transport = "streamable-http", host = "0.0.0.0", port = 3001)
 
 # File where webhook server stores events
 EVENTS_FILE = Path(__file__).parent / "github_events.json"
@@ -466,4 +466,4 @@ Format your response as:
 
 
 if __name__ == "__main__":
-    mcp.run(transport = "stdio")
+    mcp.run(transport = "streamable-http")
