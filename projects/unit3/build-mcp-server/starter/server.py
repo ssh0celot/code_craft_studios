@@ -5,17 +5,22 @@ TODO: Implement tools for analyzing git changes and suggesting PR templates
 """
 
 import os
+from dotenv import load_dotenv
 import json
 import subprocess
 from pathlib import Path
 from typing import Optional
 
+
+
 from mcp.server.fastmcp import FastMCP, Context
 
+load_dotenv()
 
+#token = os.getenv("Bearer")
 
 # Initialize the FastMCP server
-mcp = FastMCP("pr-agent", transport = "stdio")
+mcp = FastMCP("pr-agent", transport = "streamable-http", host = "0.0.0.0", port = 3001)
 
 # File where webhook server stores events
 EVENTS_FILE = Path(__file__).parent / "github_events.json"
@@ -466,4 +471,4 @@ Format your response as:
 
 
 if __name__ == "__main__":
-    mcp.run(transport = "stdio")
+    mcp.run(transport = "streamable-http")
